@@ -10,7 +10,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * @author ：liuanmin
  * @date ：Created in 2020/1/3
- * @description：
+ * @description： 发布订阅模式
  */
 @Slf4j
 public class Consumer02_subscribe_email {
@@ -18,7 +18,7 @@ public class Consumer02_subscribe_email {
     //队列名称
     private static final String QUEUE_INFORM_EMAIL = "queue_inform_email";
     //交换机
-    private static final String EXCHANGE_FANOUT_INFOR = "exchange_fanout_inform";
+    private static final String EXCHANGE_FANOUT_INFORM = "exchange_fanout_inform";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         //通过连接工厂创建新的连接
@@ -59,7 +59,7 @@ public class Consumer02_subscribe_email {
          * topic:对应通配符工作模式
          * headers:对应headers工作模式
          */
-        channel.exchangeDeclare(EXCHANGE_FANOUT_INFOR, BuiltinExchangeType.FANOUT);
+        channel.exchangeDeclare(EXCHANGE_FANOUT_INFORM, BuiltinExchangeType.FANOUT);
         //进行交换机和队列绑定
         //参数：String queue, String exchange, String routingKey
         /**
@@ -68,7 +68,7 @@ public class Consumer02_subscribe_email {
          * 2.exchange 交换机名称
          * 3.routingKey 路由key,作用是交换机根据路由key的值将消息转发到指定的队列中，在发布订阅模式中设置为空字符串
          */
-        channel.queueBind(QUEUE_INFORM_EMAIL,EXCHANGE_FANOUT_INFOR,"");
+        channel.queueBind(QUEUE_INFORM_EMAIL,EXCHANGE_FANOUT_INFORM,"");
         //实现消费方法
         DefaultConsumer defaultConsumer = new DefaultConsumer(channel){
             //当接收到消息后，此方法将被调用

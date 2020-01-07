@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
  * @description： 路由模式(具备发布订阅模式的功能)
  */
 @Slf4j
-public class Producer02_routing {
+public class Producer03_routing {
 
     //队列名称
     private static final String QUEUE_INFORM_EMAIL = "queue_inform_email";

@@ -57,7 +57,7 @@ public class Producer01 {
              * 3.props 消息属性
              * 4.body 消息内容
              */
-            String message = "hello,猪八戒";
+            String message = "hello,一杯96的java";
             channel.basicPublish("", QUEUE,null,message.getBytes());
             log.info("send to mq {}",message);
         } catch (Exception e) {
